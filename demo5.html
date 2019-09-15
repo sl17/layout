@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>布局两端对齐</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				margin-bottom: 20px;
+				margin-top: 5px;
+			}
+			body {
+				padding: 100px;
+			}
+			
+			.p2 {
+				width: 800px;
+				text-align:justify;
+      	text-justify:distribute-all-lines;/*ie6-8*/
+      	text-align-last:justify;/* ie9*/
+      	-moz-text-align-last:justify;/*ff*/
+      	-webkit-text-align-last:justify;/*chrome 20+*/
+				font-size: 14px;
+				border: 1px solid #000000;
+			}
+			.p2 div{display: inline-block;}
+			.p3{
+				width: 800px;
+				text-align:justify;
+      	text-justify:distribute-all-lines;/*ie6-8*/
+      	text-align-last:justify;/* ie9*/
+      	-moz-text-align-last:justify;/*ff*/
+      	-webkit-text-align-last:justify;/*chrome 20+*/
+				font-size: 14px;
+				border: 1px solid #000000;
+			}
+		</style>
+	</head>
+	<body>
+		元素内部元素两端对齐：(元素设为行标签)
+		<p class="p3">
+			<span>span</span>
+			<a href="">aaaa</a>
+			<em>emem</em>
+			<strong>strong</strong>
+			<u>uuuu</u>
+		</p>
+		元素内部元素两端对齐:(元素设为display:inline-block)
+		
+		<div class="p2">
+			<div>div1</div>
+			<div>div2</div>
+			<div>div3</div>
+			<div>div4</div>
+			<div>div5</div>
+		</div>
+		文字两端对齐：
+		<p class="p3">通过使用CSS来提升工作效率</p>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
