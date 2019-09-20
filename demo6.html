@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		.parent{border: 1px solid #000;}
+		.child{background: #eee;}
+	</style>
+</head>
+<body>
+	<h1>先说子元素固定高度的情况：</h1>
+	<p>先来个定位布局 （兼容IE）</p>
+	<style>
+		.parent0{width: 100px;height: 200px;position: relative;}
+		.child0{width: 100px;height: 50px;position: absolute;margin: auto;top:0;bottom:0;}
+	</style>
+	<div class='parent0 parent'>
+	  <div class='child0 child'>child 采用定位布局</div>
+	</div>
+
+	<p>定位布局 + transform</p>
+	<style>
+		.parent1{width: 100px;height: 200px;position: relative;}
+		.child1{width: 100px;height: 50px;position: absolute;top: 50%;transform: translate(0,-50%);}
+	</style>
+	<div class='parent1 parent'>
+	  <div class='child1 child'>child 采用定位布局</div>
+	</div>
+
+	<p>定位布局 + 负margin 需要计算 繁琐 （好处是兼容IE）</p>
+	<style>
+		.parent2{width: 100px;height: 200px;position: relative;}
+		.child2{width: 100px;height: 50px;position: absolute;top: 50%;margin: -25px auto 0;}
+	</style>
+	<div class='parent2 parent'>
+	  <div class='child2 child'>child 采用定位布局</div>
+	</div>
+
+
+	<h1>接下来就是子元素不确定高度的情况</h1>
+	<p>table布局（兼容IE）</p>
+	<style>
+		.parent3{width: 100px;height: 200px;display: table;}
+		.child3{width: 50px;display: table-cell;vertical-align: middle;}
+	</style>
+	<div class='parent3 parent'>
+	  <div class='child3 child'>child 采用定位布局</div>
+	</div>
+	
+	<p>再来一个</p>
+	<style>	
+		.parent4{width: 100px;height: 200px;display: -webkit-box;-webkit-box-align: center;}
+	</style>
+	<div class='parent4 parent'>
+  	<div class='child child'>child 采用定位布局</div>
+	</div>
+
+
+</body>
+</html>
