@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<style> 
+	*{margin: 0;padding: 0;}
+.newspaper
+{
+	/*列数*/
+-moz-column-count:3; /* Firefox */
+-webkit-column-count:3; /* Safari and Chrome */
+column-count:3;
+/*列之间的距离*/
+-moz-column-gap:30px; /* Firefox */
+-webkit-column-gap:30px; /* Safari and Chrome */
+column-gap:30px;
+/*规定列之间规则的样式*/
+-moz-column-rule:1px solid #000; /* Firefox */
+-webkit-column-rule:1px solid #000; /* Safari and Chrome */
+column-rule:1px solid #000;
+background: #eee;
+}
+h2
+{
+	/*横跨所有列*/
+-webkit-column-span:all; /* Chrome */
+column-span:all;
+}
+li{list-style: none;font-size: 36px;}
+li div{display: inline-block;width: 150px;text-align: right;height: 60px;line-height: 60px;}
+li span{font-size: 20px;display: inline-block;width: 80px;text-align: center;height: 30px;line-height: 30px;}
+</style>
+</head>
+<body> 
+
+<div class="newspaper">
+	<h2>英文字母 此文字属性为<code>column-span:all</code>横跨所有列；此文字属性为<code>column-span:all</code>横跨所有列；此文字属性为<code>column-span:all</code>横跨所有列</h2>
+	<ul>
+		<li><div>A </div><span>a</span></li>
+		<li><div>B</div><span>b</span></li>
+		<li><div>C</div><span>c</span></li>
+		<li><div>D</div><span>d</span></li>
+		<li><div>E</div><span>e</span></li>
+		<li><div>F</div><span>f</span></li>
+		<li><div>G</div><span>g</span></li>
+		<li><div>H</div><span>h</span></li>
+		<li><div>I</div><span>i</span></li>
+		<li><div>J</div><span>j</span></li>
+		<li><div>K</div><span>k</span></li>
+		<li><div>L</div><span>l</span></li>
+		<li><div>M</div><span>m</span></li>
+		<li><div>N</div><span>n</span></li>
+		<li><div>O</div><span>o</span></li>
+		<li><div>P</div><span>p</span></li>
+		<li><div>Q</div><span>q</span></li>
+		<li><div>R</div><span>r</span></li>
+		<li><div>S</div><span>s</span></li>
+		<li><div>T</div><span>t</span></li>
+		<li><div>U</div><span>u</span></li>
+		<li><div>V</div><span>v</span></li>
+		<li><div>W</div><span>w</span></li>
+		<li><div>X</div><span>x</span></li>
+		<li><div>Y</div><span>y</span></li>
+		<li><div>Z</div><span>z</span></li>
+	</ul>
+</div>
+
+<p style="color: red;font-size: 20px;line-height: 100px;">正常布局：</p>
+<style type="text/css">
+	.wrap{background: #e4e4ca;}
+	.wrap ul{overflow: hidden;}
+	.wrap ul li{float: left;width: 33.3333%;}
+</style>
+
+<div class="wrap">
+	<h2>英文字母    英文字      母英文字母    英文字母    英文字母    英文字母    英文字母    英文字母    英文字母    </h2>
+	<ul>
+		<li><div>A </div><span>a</span></li>
+		<li><div>B</div><span>b</span></li>
+		<li><div>C</div><span>c</span></li>
+		<li><div>D</div><span>d</span></li>
+		<li><div>E</div><span>e</span></li>
+		<li><div>F</div><span>f</span></li>
+		<li><div>G</div><span>g</span></li>
+		<li><div>H</div><span>h</span></li>
+		<li><div>I</div><span>i</span></li>
+		<li><div>J</div><span>j</span></li>
+		<li><div>K</div><span>k</span></li>
+		<li><div>L</div><span>l</span></li>
+		<li><div>M</div><span>m</span></li>
+		<li><div>N</div><span>n</span></li>
+		<li><div>O</div><span>o</span></li>
+		<li><div>P</div><span>p</span></li>
+		<li><div>Q</div><span>q</span></li>
+		<li><div>R</div><span>r</span></li>
+		<li><div>S</div><span>s</span></li>
+		<li><div>T</div><span>t</span></li>
+		<li><div>U</div><span>u</span></li>
+		<li><div>V</div><span>v</span></li>
+		<li><div>W</div><span>w</span></li>
+		<li><div>X</div><span>x</span></li>
+		<li><div>Y</div><span>y</span></li>
+		<li><div>Z</div><span>z</span></li>
+	</ul>
+</div>
+</body>
+</html>
