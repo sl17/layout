@@ -1,0 +1,159 @@
+<!D1980YPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src=""></script>
+  <script src="http://www.icheshi.com/zhuanti/new_chetuanzhang/js/echarts.min.js"></script>
+
+</head>
+<body>
+    <div id="monitor-detail-info" style="width:700px;height:500px;margin: 50px auto"></div>
+        
+  <script>
+      var myChart = echarts.init(document.getElementById('monitor-detail-info'));
+      var option = {
+        dataZoom: [
+          //   {
+          //   startValue: '周一'
+          // }, 
+          {
+          // type: 'inside',
+          type: "slider", /*类型*/
+            xAxisIndex: 0, /*对应的轴*/
+            bottom: 8, /*位置，定位*/
+            handleIcon: "M0,0 v5.1h1 v-5.1h-1 Z",
+            handleStyle: { /*手柄的样式*/
+                color: "#79d0fd",
+                borderColor: "#79d0fd"
+            },
+            backgroundColor: "#e2f3ff", /*背景 */
+            dataBackground: { /*数据背景*/
+                lineStyle: {
+                    color: "#000000"
+                },
+                areaStyle: {
+                    color: "#d4d9dd"
+                }
+            },
+            fillerColor: "rgba(31,178,251,0.2)", /*被start和end遮住的背景*/
+        }],
+        tooltip: {
+            trigger: 'axis',
+            extraCssText: 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);',
+            backgroundColor: 'rgba(255,255,255,.8)',
+            textStyle:{
+              color: '#000',
+              fontSize: 12
+            }
+        },
+        legend: {
+            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎'],
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: ['周一','周二','周三','周四','周五','周六','周日'],
+          axisLine:{
+            lineStyle:{
+              color: '#555'
+            }
+          }
+        },
+        yAxis: {
+          type: 'value',
+          splitLine:{
+            lineStyle: {
+              type: 'dashed'
+            }
+          },
+          axisLine:{
+            show: false
+          },
+          axisTick:{
+            show: false
+          }
+        },
+        series: [
+          {
+            name:'邮件营销',
+            type:'line',
+            stack: '总量',
+            data:[120, 132, 101, 134, 90, 230, 210],
+            smooth: true,//设为曲线
+            symbol: "circle",//标记的图形为实心圆
+            symbolSize: 6,//标记的大小
+            itemStyle:{
+              normal:{
+                color:'#1890ff',
+                borderColor:'#1890ff',  //拐点边框颜色
+              }
+            }, 
+          },
+          {
+            name:'联盟广告',
+            type:'line',
+            stack: '总量',
+            data:[220, 182, 191, 234, 290, 330, 310],
+            smooth: true,
+            symbol: "circle",//标记的图形为实心圆
+            symbolSize: 6,//标记的大小
+            itemStyle:{
+              normal:{
+                color:'#2fc25b',
+                borderColor:'#2fc25b',  //拐点边框颜色
+              }
+            }, 
+          },
+          {
+            name:'视频广告',
+            type:'line',
+            stack: '总量',
+            data:[150, 232, 201, 154, 190, 330, 410],
+            smooth: true,
+            symbol: "circle",//标记的图形为实心圆
+            symbolSize: 6,//标记的大小
+            itemStyle:{
+              normal:{
+                color:'#facc14',
+                borderColor:'#facc14',  //拐点边框颜色
+              }
+            }, 
+          },
+          {
+            name:'直接访问',
+            type:'line',
+            stack: '总量',
+            data:[320, 332, 301, 334, 390, 330, 320],
+            smooth: true,
+            symbol: "circle",//标记的图形为实心圆
+            symbolSize: 6,//标记的大小
+            itemStyle:{
+              normal:{
+                color:'#36cfc9',
+                borderColor:'#36cfc9',  //拐点边框颜色
+              }
+            }, 
+          },
+          {
+            name:'搜索引擎',
+            type:'line',
+            stack: '总量',
+            data:[820, 932, 901, 934, 1290, 1330, 1320],
+            smooth: true,
+            symbol: "circle",//标记的图形为实心圆
+            symbolSize: 6,//标记的大小
+            itemStyle:{
+              normal:{
+                color:'#8543e0',
+                borderColor:'#8543e0',  //拐点边框颜色8543e0
+              }
+            }, 
+          }
+        ]
+      };
+      myChart.setOption(option);
+    
+  </script>
+</body>
+</html>
