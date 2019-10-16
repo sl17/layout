@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+</style>
+<body>
+  <script>
+    document.getElementsByTagName("body")[0].style.backgroundImage = 'url(https://sl17.github.io/cyclone.github.io/assets/img/bg/bg10.jpg)';
+    document.addEventListener('mousemove', showMousePosition, false);
+    let bodyWidth = document.body.clientWidth
+    let bodyHeight = document.body.clientHeight
+    window.onresize = function () {
+      bodyWidth = document.body.clientWidth;
+      bodyHeight = document.body.clientHeight;
+    }
+    let bodyWidthHalf = bodyWidth / 2;
+    let bodyHeightHalf = bodyHeight / 2;
+    let [diffW, diffH] = [0, 0]
+    function showMousePosition(event) {
+      diffW = bodyWidthHalf - event.clientX;
+      diffH = bodyHeightHalf - event.clientY;
+      document.getElementsByTagName("body")[0].style.backgroundPositionX = 50 + diffW * 0.01 + '%'
+      document.getElementsByTagName("body")[0].style.backgroundPositionY = 50 + diffH * 0.01 + '%'
+    }
+  </script>
+</body>
+
+</html>
