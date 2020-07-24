@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    *{margin: 0;padding: 0;}
+    body,html{width: 100%;height: 100vh;overflow: hidden;}
+    .sky{background: linear-gradient(#02113a,#2ba5d4 50%,#c8ddd9 74%,#fdcf96 86%,#fa9d86 93%,#9f7fa2 99%);height: 40%;position: relative;overflow: hidden;}
+    .sun{width:20px;height: 20px;position: absolute;margin: auto;bottom: 0;left: 0;right:0;background: #fff;box-shadow: 0 0 13px 9px #fcff00;border-radius: 40px;}
+    .light{position: absolute;width: 100%;height: 100%;background: radial-gradient(rgb(255 0 0 / 0.2),rgb(255 255 0 / 0.05),transparent);top: 50%;}
+    .light-2{position: absolute;top:0;width: 100%;height: 100%;background: linear-gradient(transparent 94%,rgb(163 139 166 / 0.1) 96%,transparent 97%,#9f7fa2 101%)}
+  </style>
+</head>
+<body>
+  <div class="sky">
+    <!-- 光线 -->
+    <p class="light"></p>
+    <div class="sun"></div>
+    <p class="light-2"></p>
+  </div>
+</body>
+</html>
