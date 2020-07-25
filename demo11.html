@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .input {
+      position: relative;
+      margin: 50px;
+    }
+
+    .input-fill {
+      border: 1px solid #ececec;
+      outline: none;
+      padding: 13px 16px 13px;
+      font-size: 16px;
+      line-height: 1.5;
+      width: fit-content;
+      border-radius: 5px;
+    }
+
+    .input-fill:placeholder-shown::placeholder {
+      color: transparent;
+    }
+
+    .input-label {
+      position: absolute;
+      font-size: 16px;
+      line-height: 1.5;
+      left: 16px;
+      top: 14px;
+      color: #a2a9b6;
+      padding: 0 2px;
+      transform-origin: 0 0;
+      pointer-events: none;
+      transition: all .25s;
+    }
+
+    .input-fill:focus {
+      border: 1px solid #2486ff;
+    }
+
+    .input-fill:not(:placeholder-shown)~.input-label,
+    .input-fill:focus~.input-label {
+      transform: scale(0.75) translate(0, -32px);
+      background-color: #fff;
+      color: #2486ff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="input">
+    <input class="input-fill" placeholder="邮箱">
+    <label class="input-label">邮箱</label>
+  </div>
+  <div class="input">
+    <input class="input-fill" placeholder="姓名">
+    <label class="input-label">姓名</label>
+  </div>
+  <div class="input">
+    <input class="input-fill" placeholder="电话">
+    <label class="input-label">电话</label>
+  </div>
+</body>
+
+</html>
