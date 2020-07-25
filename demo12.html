@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {
+      margin: 50px;
+      scroll-snap-type: x mandatory;
+      text-align: left;
+      width: 250px;
+      height: 250px;
+      overflow-x: scroll;
+      display: flex;
+      box-sizing: border-box;
+      border: 1px solid #000;
+    }
+
+    .child {
+      flex: 0 0 250px;
+      width: 250px;
+      color: #fff;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: start;
+    }
+    .wrap2{
+      margin: 50px;
+      scroll-snap-type: y mandatory;
+      text-align: left;
+      width: 250px;
+      height: 250px;
+      overflow: hidden;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      border: 1px solid #000;
+    }
+    .child2 {
+      flex: 0 0 250px;
+      width: 250px;
+      color: #fff;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: start;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="child" style="background-color: #663399;">1</div>
+    <div class="child" style="background-color: #f99;">2</div>
+    <div class="child" style="background-color: #6e9;">3</div>
+  </div>
+  <div class="wrap2">
+    <div class="child2" style="background-color: #663399;">1</div>
+    <div class="child2" style="background-color: #f99;">2</div>
+    <div class="child2" style="background-color: #6e9;">3</div>
+  </div>
+</body>
+
+</html>
