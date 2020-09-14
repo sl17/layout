@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .wrap em {
+    font-style: normal;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .radio,
+  .checkbox {
+    overflow: hidden;
+    margin: 50px;
+  }
+
+  .radio p,
+  .checkbox p {
+    /* width: 55px; */
+    float: left;
+    position: relative;
+    margin-right: 30px;
+    height: 30px;
+  }
+
+  .radio p input,
+  .checkbox p input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .radio p label,
+  .checkbox p label {
+    float: left;
+    position: relative;
+    white-space: nowrap;
+  }
+  .checkbox p label span i,.radio p label span i{
+    display: inline-block;
+    width: 9px;
+    height: 4px;
+    border-left: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    transform: rotate(-45deg);
+    vertical-align: 8px;
+    margin-left: 2px;
+  }
+  .radio p label span {
+    vertical-align: -4px;
+    margin-right: 5px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #eee;
+    border-radius: 20px;
+  }
+
+  .checkbox p label span {
+    vertical-align: -4px;
+    margin-right: 5px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+  }
+
+  .radio p input:checked+label span,
+  .checkbox p input:checked+label span {
+    border: 1px solid #0795ff;
+  }
+  .radio p input:checked+label span i,
+  .checkbox p input:checked+label span i{
+    border-left: 1px solid #0795ff;
+    border-bottom: 1px solid #0795ff;
+  }
+  .radio p input:checked+label em,
+  .checkbox p input:checked+label em {
+    color: #0795ff;
+  }
+</style>
+
+
+<body>
+
+  <div class="wrap">
+    <div class="radio">
+      <p>
+        <input type="radio" checked="checked" id="fruit1" name="fruit">
+        <label for="fruit1"><span><i></i></span><em>苹果</em></label>
+      </p>
+      <p>
+        <input type="radio" id="fruit2" name="fruit">
+        <label for="fruit2"><span><i></i></span><em>桃子</em></label>
+      </p>
+      <p>
+        <input type="radio" id="fruit3" name="fruit">
+        <label for="fruit3"><span><i></i></span><em>葡萄</em></label>
+      </p>
+    </div>
+    <div class="checkbox">
+      <p>
+        <input type="checkbox" id="animal1" name="animal">
+        <label for="animal1"><span><i></i></span><em>狗</em></label>
+      </p>
+      <p>
+        <input type="checkbox" id="animal2" name="animal">
+        <label for="animal2"><span><i></i></span><em>猫</em></label>
+      </p>
+      <p>
+        <input type="checkbox" id="animal3" name="animal">
+        <label for="animal3"><span><i></i></span><em>猪</em></label>
+      </p>
+    </div>
+  </div>
+  
+</body>
+
+</html>
