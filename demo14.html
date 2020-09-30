@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    *{margin: 0;}
+    .wrap{width: 30px;height: 10px;margin: 200px;}
+    span{width: 10px;height: 10px;border-radius: 20px;float: left;position: relative;mix-blend-mode:color-dodge;}
+    .b{background: #28f2e9;animation: mb 1s linear infinite;}
+    .r{background: #ff2a5a;animation: mr 1s linear infinite;}
+    @keyframes mb {
+      0%{transform: scale(1) translateX(0);}
+      22.5%{transform: scale(1.4);z-index: 1;}
+      45%{transform: scale(1) translateX(10px);z-index: 0;}
+      55%{transform: scale(1) translateX(10px);z-index: 0;}
+      77.5%{transform: scale(.7);z-index: 0;}
+      100%{transform: scale(1) translateX(0);}
+    }
+    @keyframes mr {
+      0%{transform: scale(1) translateX(0);}
+      22.5%{transform: scale(.7);z-index: 0;}
+      45%{transform: scale(1) translateX(-10px);z-index: 8;}
+      55%{transform: scale(1) translateX(-10px);z-index: 8;}
+      77.5%{transform: scale(1.4);z-index: 1;}
+      100%{transform: scale(1) translateX(0);}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <span class="b"></span>
+    <span class="r"></span>
+  </div>
+</body>
+
+</html>
