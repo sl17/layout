@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+function last(data, col) {
+  let obj = [];
+  let len = data.length - 1
+  data.map((v, i) => {
+    let s = {}
+    if (i === len) {
+      s = {
+        value: v,
+        symbol: 'circle',//拐点样式 
+        symbolSize: 8,
+        symbolOffset: [3, 0],
+        itemStyle: {
+          normal: {
+            color: 'transparent',//拐点颜色
+            borderColor: col,//拐点边框颜色
+            borderWidth: 3//拐点边框大小
+          },
+          emphasis: {
+            color: '#000'//hover拐点颜色定义
+          }
+        }
+      }
+    } else {
+      s = {
+        value: v,
+        symbol: 'circle',//拐点样式 
+        symbolSize: 3,
+        itemStyle: {
+          normal: {
+            color: 'transparent',//拐点颜色
+            borderColor: 'transparent',//拐点边框颜色
+            borderWidth: 0//拐点边框大小
+          },
+          emphasis: {
+            color: '#000',//hover拐点颜色定义
+            borderColor: col,//拐点边框颜色
+            borderWidth: 2//拐点边框大小
+          }
+        }
+      }
+    }
+    obj.push(s)
+  })
+  return obj;
+}
+option = {
+  title: {
+    text: '折线图堆叠'
+  },
+  tooltip: {
+    trigger: 'axis',
+    formatter: function (datas) {
+      let str = '';
+      str = `${datas[0].axisValue}<br>
+        <span style='
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background:#01FF7D;margin-right:5px;'>
+        </span>${datas[0].seriesName}：${datas[0].data.value}<br>
+        <span style='
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background:#0179FF;margin-right:5px;'>
+        </span>${datas[1].seriesName}：${datas[1].data.value}`
+      return str;
+    },
+  },
+  legend: {
+    data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎'],
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    //轴线颜色
+    axisLine: {
+
+      lineStyle: {
+        color: '#ccc',
+      },
+    },
+    //坐标轴文字相关
+    axisLabel: {
+      show: true,
+      textStyle: {
+        color: '#000',    //更改坐标轴文字颜色
+        fontSize: 12     //更改坐标轴文字大小
+      }
+    },
+    axisTick: {
+      show: false,
+    },
+  },
+  yAxis: [{
+    name: '邮件营销',
+    nameLocation: 'middle',
+    nameTextStyle: {
+      padding: [3, 4, 50, 6]
+    },
+    splitLine: {
+      lineStyle: {
+        type: "solid"
+      }
+    },
+    //坐标轴文字相关
+    axisLabel: {
+      show: true,
+      textStyle: {
+        color: '#000',    //更改坐标轴文字颜色
+        fontSize: 12     //更改坐标轴文字大小
+      }
+    },
+    //轴线颜色
+    axisLine: {
+      show: false,
+      lineStyle: {
+        color: '#DEDEDE',
+      },
+    },
+    //坐标轴刻度
+    axisTick: {
+      show: false,
+    },
+  },
+  {
+    name: '联盟广告',
+    nameLocation: 'middle',
+    nameTextStyle: {
+      padding: [50, 4, 5, 6]
+    },
+    splitLine: {
+      show: false
+    },
+    axisLine: {
+      show: false
+    },
+    axisTick: {
+      show: false
+    },
+    axisLabel: {
+      textStyle: {
+        color: '#333'
+      },
+      // formatter: '{value} '
+    }
+  }],
+  series: [
+    {
+      name: '邮件营销',
+      type: 'line',
+      data: last([120, 132, 101, 134, 90, 230, 210], '#01FF7D'),
+      // data: [120, 132, 101, 134, 90, 230, 210],
+      smooth: true,
+      yAxisIndex: 0,
+      lineStyle: {
+        width: 5,
+        color: new echarts.graphic.LinearGradient(0, 0, 1, 0,
+          [
+            {
+              offset: 0,
+              color: 'transparent'
+            },
+            {
+              offset: 1,
+              color: '#01FF7D'
+            }
+          ]),
+      },
+
+    },
+    {
+      name: '联盟广告',
+      type: 'line',
+      data: last([220, 182, 191, 234, 290, 330, 310], '#0179FF'),
+      smooth: true,
+      yAxisIndex: 1,
+      lineStyle: {
+        width: 5,
+        color: new echarts.graphic.LinearGradient(0, 0, 1, 0,
+          [
+            {
+              offset: 0,
+              color: 'transparent'
+            },
+            {
+              offset: 1,
+              color: '#0179FF'
+            }
+          ]),
+      },
+    },
+    
+  ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
