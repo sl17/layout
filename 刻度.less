@@ -1,0 +1,63 @@
+.broadcast-dial-view {
+  width: 530px;
+  height: 530px;
+  position: relative;
+  .scale-box {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @list: 0deg, 3deg, 6deg, 9deg, 12deg, 15deg, 18deg, 21deg, 24deg, 27deg,
+      30deg, 33deg, 36deg, 39deg, 42deg, 45deg, 48deg, 51deg, 54deg, 57deg,
+      60deg, 63deg, 66deg, 69deg, 72deg, 75deg, 78deg, 81deg, 84deg, 87deg,
+      90deg, 93deg, 96deg, 99deg, 102deg, 105deg, 108deg, 111deg, 114deg, 117deg,
+      120deg, 123deg, 126deg, 129deg, 132deg, 135deg, 138deg, 141deg, 144deg,
+      147deg, 150deg, 153deg, 156deg, 159deg, 162deg, 165deg, 168deg, 171deg,
+      174deg, 177deg, 180deg, 183deg, 186deg, 189deg, 192deg, 195deg, 198deg,
+      201deg, 204deg, 207deg, 210deg, 213deg, 216deg, 219deg, 222deg, 225deg,
+      228deg, 231deg, 234deg, 237deg, 240deg, 243deg, 246deg, 249deg, 252deg,
+      255deg, 258deg, 261deg, 264deg, 267deg, 270deg, 273deg, 276deg, 279deg,
+      282deg, 285deg, 288deg, 291deg, 294deg, 297deg, 300deg, 303deg, 306deg,
+      309deg, 312deg, 315deg, 318deg, 321deg, 324deg, 327deg, 330deg, 333deg,
+      336deg, 339deg, 342deg, 345deg, 348deg, 351deg, 354deg, 357deg;
+    animation: rotateM 10s linear infinite;
+    transform-origin: 1px 1px;
+    .for(@list, @code) {
+      & {
+        .loop(@i:1) when (@i =< length(@list)) {
+          @value: extract(@list, @i);
+          @code();
+          .loop(@i + 1);
+        }
+        .loop();
+      }
+    }
+    .for( @list, {
+      .scale@{i} {
+        position: absolute;
+        display: inline-block;
+        width: 1px;
+        height: 180px;
+        border-bottom: 12px solid #000;
+        background: transparent;
+        transform: rotate(@value);
+        transform-origin: 0 0px;
+        }
+      }
+    );
+  }
+}
+@keyframes rotateM {
+  form{transform: rotate(0deg);}
+  to{transform: rotate(360deg);}
+}
+/* <div class="broadcast-dial-view">
+<div class="scale-box">
+<i v-for="(v, i) in 120" :key="i" :class="'scale' + (i + 1)"></i>
+</div>
+</div>
+*/
