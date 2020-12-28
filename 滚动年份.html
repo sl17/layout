@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {margin: 0;padding: 0;}
+    .scale-wrap {margin: 200px;width: 20px;height: 200px;position: relative;}
+    .year {position: absolute;height: 20px;width: 80px;margin: auto;top: 0;bottom: 0;left: 40px;font-size: 12px;line-height: 20px;}
+    .scale {margin: 20px;width: 8px;height: 100%;background-image: repeating-linear-gradient(0deg, #000 0px, #fff 1px, #fff 5px);position: relative;transition: all .3s ease-in-out;}
+    .scale-long {width: 8px;height: 100%;background-image: repeating-linear-gradient(0deg, #000 0px, transparent 1px, transparent 25px);position: absolute;left: 8px;top: 0;transition: all .3s ease-in-out;}
+    .selYear {position: absolute;left: 60px;}
+    .selYear div {width: 30px;height: 20px;font-size: 12px;line-height: 20px;border-radius: 4px;cursor: pointer;background: #fff;margin-bottom: 5px;text-align: center;box-shadow: 0 0 2px 1px #eee;}
+  </style>
+</head>
+
+<body>
+  <div class="scale-wrap" id="scale-wrap">
+    <div class="selYear">
+      <div onclick="tabYear(1)">1</div>
+      <div onclick="tabYear(10)">10</div>
+      <div onclick="tabYear(100)">100</div>
+    </div>
+    <p class="year" id="year"></p>
+    <div class="scale" id="scale">
+      <div class="scale-long" id="scale-long"></div>
+    </div>
+  </div>
+  <script>
+    let scale = document.getElementById('scale');
+    let scaleLong = document.getElementById('scale-long');
+    let year = document.getElementById('year');
+    let tab = 1;
+    let num = 0;
+    let scrollFunc = function (e) {
+      e = e || window.event;
+      if (e.wheelDelta > 0) { //当滑轮向上滚动时  
+        num -= 10 * tab;
+      }
+      if (e.wheelDelta < 0) { //当滑轮向下滚动时  
+        num += 10 * tab;
+      }
+      scale.style.backgroundPosition = '0px ' + num + 'px';
+      scaleLong.style.backgroundPosition = '0px ' + num + 'px';
+      let n = num / 10;
+      year.innerHTML = n > 0 ? '前' + n + '年' : Math.abs(n) + '年';
+    }
+    let scaleWrap = document.getElementById('scale-wrap');
+    scaleWrap.onmousewheel = scrollFunc;
+    function tabYear(val) {
+      tab = val;
+    }
+  </script>
+</body>
+
+</html>
