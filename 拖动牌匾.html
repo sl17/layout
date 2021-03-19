@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav {
+      width: 1000px;
+      height: 36px;
+      background-color: coral
+    }
+
+    .box {
+      position: relative;
+      width: 180px;
+      height: 36px;
+      margin-left: 50px;
+    }
+
+    .lineLeft {
+      left: 10px;
+    }
+
+    .line {
+      position: absolute;
+      top: 10px;
+      width: 4px;
+      height: 80px;
+      background-image: repeating-linear-gradient(45deg, #777 1px 1px, #ffb700 3px 5px);
+      box-shadow: 0 0 3px 1px #bd8905;
+      z-index: 2;
+    }
+
+    .line::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      width: 4px;
+      height: 100%;
+      background-image: linear-gradient(90deg, rgba(0, 0, 0, .1) 0% 20%, rgba(0, 0, 0, 0) 50% 50%, rgba(0, 0, 0, .1) 80% 100%);
+    }
+
+    .line::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 0 0px 2px #da9e05;
+      position: absolute;
+      bottom: -4px;
+      left: -1px;
+
+    }
+
+    .lineRight {
+      right: 10px;
+    }
+
+    .content {
+      width: 180px;
+      position: absolute;
+      height: 36px;
+      background-color: darkcyan;
+      left: 0;
+      top: 73px;
+      box-shadow: 3px 4px 6px 1px #969696;
+    }
+
+    .animate {
+      animation: move 1s 1 ease-in-out forwards;
+    }
+
+    @keyframes move {
+      0% {
+        box-shadow: 6px 6px 8px 1px #ababab;
+      }
+
+      20% {
+        box-shadow: 2px 2px 6px 1px #737171;
+      }
+
+      40% {
+        box-shadow: 5px 5px 7px 1px #a0a0a0;
+      }
+
+      60% {
+        box-shadow: 3px 3px 5px 1px #7f7f7f;
+      }
+
+      80% {
+        box-shadow: 4px 4px 6px 1px #908e8e;
+      }
+
+      100% {
+        box-shadow: 3px 4px 6px 1px #969696;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="box">
+      <div class="line lineLeft"></div>
+      <div class="line lineRight"></div>
+      <div class="content"></div>
+    </div>
+  </div>
+  <script>
+    let item = {
+      box: document.querySelector('.box'),
+      lineLeft: document.querySelector('.lineLeft'),
+      lineRight: document.querySelector('.lineRight'),
+      content: document.querySelector('.content'),
+      downX: 0,//鼠标点下的X坐标
+      downY: 0,//鼠标点下的Y坐标
+      elLeft: 0,//被点击元素的左边距离
+      elRight: 0,//被点击元素的右边距离
+      elWith: 0,//被点击元素的宽度
+      downElX: 0,//鼠标点击在元素上的X轴位置
+      isDown: false,
+      moveLR: null,//哪边转角度
+      deg: 0,//需要转的角度
+      lineLong: document.querySelector('.lineLeft').clientHeight,
+      lineMoveX: 0,//绳子平移的X轴长度
+      countDeg: function (side1, side2) {
+        return Math.acos((side1 * side1 + side1 * side1 - side2 * side2)
+          / (2 * side1 * side1)) * (180 / Math.PI);
+      }
+    }
+    // console.log()
+    item.content.onmousedown = function (e) {
+      item.content.classList.remove('animate');
+      item.downX = e.clientX;
+      item.downY = e.clientY;
+      //鼠标点击在元素上的X轴位置
+      let downElNowX = item.downX - item.box.offsetLeft;
+      item.elWith = item.content.clientWidth;
+
+      if (downElNowX > item.elWith / 2) {
+        item.downElX = downElNowX;
+        item.moveLR = 'left';
+      } else {
+        item.downElX = item.elWith - downElNowX;
+        item.moveLR = 'right';
+      }
+
+      item.elLeft = item.content.offsetLeft;
+      item.elRight = item.content.offsetTop;
+
+      item.isDown = true;
+    }
+    // console.log()
+    window.onmousemove = function (e) {
+      if (item.isDown == false) {
+        return;
+      }
+      let nowT = e.clientY - item.downY;
+      //计算绳子平移X方向的长度
+      item.lineMoveX = item.elWith - Math.sqrt(item.elWith * item.elWith - nowT * nowT);
+      let lineHypotenuse = item.lineLong + nowT;//斜
+      let lineLong = Math.sqrt(lineHypotenuse * lineHypotenuse - item.lineMoveX * item.lineMoveX);
+      let lineDeg = item.countDeg(lineLong, item.lineMoveX);
+      //计算转的角度
+      item.deg = item.countDeg(item.elWith, nowT);
+
+      if (item.moveLR == 'left') {
+        item.lineRight.style.cssText = `transform: rotate(${lineDeg}deg);transform-origin: 2px 4px;height:${lineLong}px;`
+        item.lineLeft.style.cssText = `transform: rotate(0deg);transform-origin: 2px 4px;height:${item.lineLong}px;`
+        item.content.style.cssText = `
+          transform: rotate(${nowT > 0 ? item.deg : -item.deg}deg);transform-origin: 10px 10px;`
+        item.content.style.top = `${item.content.offsetTop}px`;
+      } else {
+        item.lineLeft.style.cssText = `transform: rotate(${-lineDeg}deg);transform-origin: 2px 4px;height:${lineLong}px;`
+        item.lineRight.style.cssText = `transform: rotate(0deg);transform-origin: 2px 4px;height:${item.lineLong}px;`
+        item.content.style.cssText = `
+          transform: rotate(${nowT > 0 ? -item.deg : item.deg}deg);transform-origin: 170px 10px;`;
+      }
+    }
+    // console.log()
+    window.onmouseup = function () {
+      item.content.classList.add('animate')
+      setTimeout(() => {
+        item.content.classList.remove('animate')
+      }, 1000)
+      item.isDown = false
+    }
+
+  </script>
+</body>
+
+</html>
