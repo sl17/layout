@@ -11,6 +11,19 @@
       margin: 0;
       padding: 0;
     }
+    body{
+      background: #fafafb;
+    }
+    .wrap{
+      float: left;
+      margin: 10px;
+      width: 190px;
+      height: 190px;
+      border-radius: 20px;
+      background: #fff;
+      transition: all .33s ease-in-out;
+    }
+    .wrap:hover{box-shadow: 0px 3px 7px 3px #e4e4e4;}
 
     .nav {
       width: 1000px;
@@ -116,6 +129,7 @@
       <div class="content"></div>
     </div>
   </div>
+  <div class="wrap"></div>
   <script>
     let item = {
       box: document.querySelector('.box'),
