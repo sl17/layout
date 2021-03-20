@@ -120,6 +120,39 @@
         box-shadow: 3px 4px 6px 1px #969696;
       }
     }
+    .nail {
+      float: right;
+      margin: 10px;
+      width: 15px;
+      height: 15px;
+      border-radius: 8px;
+      box-shadow: 1px 1px 2px 1px #333;
+      background-image: radial-gradient(farthest-side at 40% 40%, #bbb 10%, #7c7c7c);
+      position: relative;
+    }
+
+    .nail::before,
+    .nail::after {
+      position: absolute;
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 0 0 0 2px;
+      border-bottom: 2px solid #333;
+      border-left: 2px solid #333;
+    }
+
+    .nail::before {
+      top: 3px;
+      left: 5px;
+      transform: rotate(-45deg);
+    }
+
+    .nail::after {
+      top: 8px;
+      left: 5px;
+      transform: rotate(135deg);
+    }
   </style>
 </head>
 
@@ -130,6 +163,7 @@
       <div class="line lineRight"></div>
       <div class="content"></div>
     </div>
+    <div class="nail"></div>
   </div>
   <div class="wrap"></div>
   <script>
@@ -211,7 +245,17 @@
       }, 1000)
       item.isDown = false
     }
-
+    
+    window.onload = function () {
+      let body = document.querySelector('body');
+      if (/(iPhone|iPod|iOS|Android|Windows Phone)/i.test(navigator.userAgent)) {
+        body.innerHTML = `
+        <div 
+          class="phone" 
+          style="padding-top: 200px;line-height: 40px;text-align: center;"
+        >手机端啥也没有~<br />请前往电脑端查看~</div>`
+      }
+    }
   </script>
 </body>
 
