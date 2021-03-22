@@ -28,7 +28,8 @@
     .nav {
       width: 1000px;
       height: 36px;
-      background-color: coral
+      background-color: coral;
+      position: relative;
     }
 
     .box {
@@ -122,13 +123,14 @@
     }
     .nail {
       float: right;
-      margin: 10px;
       width: 15px;
       height: 15px;
       border-radius: 8px;
       box-shadow: 1px 1px 2px 1px #333;
       background-image: radial-gradient(farthest-side at 40% 40%, #bbb 10%, #7c7c7c);
-      position: relative;
+      position: absolute;
+      top: 10px;
+      right: 10px;
     }
 
     .nail::before,
@@ -225,16 +227,16 @@
       item.deg = item.countDeg(item.elWith, nowT);
 
       if (item.moveLR == 'left') {
-        item.lineRight.style.cssText = `transform: rotate(${lineDeg}deg);transform-origin: 2px 4px;height:${lineLong}px;`
-        item.lineLeft.style.cssText = `transform: rotate(0deg);transform-origin: 2px 4px;height:${item.lineLong}px;`
+        item.lineRight.style.cssText = `will-change: transform;transform: rotate(${lineDeg}deg);transform-origin: 2px 4px;height:${lineLong}px;`
+        item.lineLeft.style.cssText = `will-change: transform;transform: rotate(0deg);transform-origin: 2px 4px;height:${item.lineLong}px;`
         item.content.style.cssText = `
-          transform: rotate(${nowT > 0 ? item.deg : -item.deg}deg);transform-origin: 10px 10px;`
+        will-change: transform;transform: rotate(${nowT > 0 ? item.deg : -item.deg}deg);transform-origin: 10px 10px;`
         item.content.style.top = `${item.content.offsetTop}px`;
       } else {
-        item.lineLeft.style.cssText = `transform: rotate(${-lineDeg}deg);transform-origin: 2px 4px;height:${lineLong}px;`
-        item.lineRight.style.cssText = `transform: rotate(0deg);transform-origin: 2px 4px;height:${item.lineLong}px;`
+        item.lineLeft.style.cssText = `will-change: transform;transform: rotate(${-lineDeg}deg);transform-origin: 2px 4px;height:${lineLong}px;`
+        item.lineRight.style.cssText = `will-change: transform;transform: rotate(0deg);transform-origin: 2px 4px;height:${item.lineLong}px;`
         item.content.style.cssText = `
-          transform: rotate(${nowT > 0 ? -item.deg : item.deg}deg);transform-origin: 170px 10px;`;
+        will-change: transform;transform: rotate(${nowT > 0 ? -item.deg : item.deg}deg);transform-origin: 170px 10px;`;
       }
     }
     // console.log()
