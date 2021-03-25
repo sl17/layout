@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .body {
+    margin: 10px 5px 20px 8px;
+    position: relative;
+    width: 4px;
+    height: 10px;
+    background-color: #000;
+    transition: all 0.33s ease-in-out;
+  }
+
+  .body div {
+    position: absolute;
+    transition: all 0.33s ease-in-out;
+  }
+
+  .leftBigarm,
+  .rightBigarm,
+  .leftThigh,
+  .leftCalf,
+  .rightThigh,
+  .rightCalf,
+  .leftFoot,
+  .rightFoot {
+    transform-origin: 1px 0px;
+  }
+
+  .leftHand,
+  .rightHand,
+  .leftForearm,
+  .rightForearm {
+    transform-origin: 0px 0px;
+  }
+</style>
+<!-- 1 -->
+<style>
+  .body1 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 50% 73%, #fff, #000);
+    top: -6px;
+    left: -1px;
+    border-radius: 4px;
+  }
+
+  .body1 .leftBigarm {
+    top: 0;
+    left: -2px;
+    width: 2px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body1 .leftForearm {
+    top: 6px;
+    left: 1px;
+    width: 1px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body1 .leftHand {
+    top: 4px;
+    left: 0px;
+    width: 1px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body1 .rightBigarm {
+    top: 0;
+    right: -2px;
+    width: 2px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body1 .rightForearm {
+    top: 6px;
+    left: 0px;
+    width: 1px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body1 .rightHand {
+    top: 4px;
+    left: 0px;
+    width: 1px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body1 .leftThigh {
+    top: 10px;
+    left: 0;
+    width: 2px;
+    height: 6px;
+    background-color: #000;
+  }
+
+  .body1 .leftCalf {
+    width: 2px;
+    height: 5px;
+    top: 6px;
+    left: 0;
+    background-color: #000;
+  }
+
+  .body1 .leftFoot {
+    top: 5px;
+    width: 2px;
+    height: 3px;
+    background-color: #000;
+    transform: rotate(35deg);
+  }
+
+  .body1 .rightThigh {
+    top: 10px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+    background-color: #000;
+  }
+
+  .body1 .rightCalf {
+    width: 2px;
+    height: 5px;
+    top: 6px;
+    left: 0;
+    background-color: #000;
+  }
+
+  .body1 .rightFoot {
+    top: 5px;
+    width: 2px;
+    height: 3px;
+    background-color: #000;
+    transform: rotate(-35deg);
+  }
+</style>
+<!-- 2 -->
+<style>
+  .body2 {
+    transform: rotate(15deg) translate(4px, 5px);
+    border-radius: 20px;
+  }
+
+  .body2 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 32% 47%, #fff 60%, #000);
+    top: -6px;
+    left: -1px;
+    border-radius: 4px;
+    transform: rotate(-40deg);
+    transform-origin: 0px 6px;
+  }
+
+  .body2 .leftBigarm,
+  .body2 .rightBigarm {
+    top: 0;
+    left: 1px;
+    width: 2px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(166deg);
+  }
+
+  .body2 .leftForearm,
+  .body2 .rightForearm {
+    top: 8px;
+    left: 1px;
+    width: 1px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-73deg);
+  }
+
+  .body2 .leftHand,
+  .body2 .rightHand {
+    top: 6px;
+    left: 0px;
+    width: 1px;
+    height: 7px;
+    border-radius: 2px;
+    transform: rotate(-69deg);
+    background-color: #000;
+  }
+
+  .body2 .leftThigh,
+  .body2 .rightThigh {
+    top: 10px;
+    left: 0;
+    width: 2px;
+    height: 7px;
+    background-color: #000;
+    transform: rotate(28deg);
+  }
+
+  .body2 .leftCalf,
+  .body2 .rightCalf {
+    width: 2px;
+    height: 8px;
+    top: 8px;
+    left: 0;
+    background-color: #000;
+    transform: rotate(-135deg);
+  }
+
+  .body2 .rightFoot,
+  .body2 .leftFoot {
+    top: 8px;
+    width: 2px;
+    height: 5px;
+    background-color: #000;
+    transform: rotate(15deg);
+  }
+</style>
+<!-- 3 -->
+<style>
+  .body3 {
+    height: 14px;
+    transform: translate(4px, 5px);
+  }
+
+  .body3 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 32% 47%, #fff 60%, #000);
+    top: -6px;
+    left: -1px;
+    border-radius: 4px;
+    transform: rotate(-20deg);
+    transform-origin: 0px 6px;
+  }
+
+  .body3 .leftBigarm {
+    top: 0;
+    left: 1px;
+    width: 2px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(181deg)
+  }
+
+  .body3 .leftForearm {
+    top: 10px;
+    left: 1px;
+    width: 1px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-92deg);
+  }
+
+  .body3 .leftHand {
+    top: 5px;
+    left: 0px;
+    width: 1px;
+    height: 5px;
+    border-radius: 2px;
+    transform: rotate(-6deg);
+    background-color: #000;
+  }
+
+  .body3 .rightBigarm {
+    top: 2px;
+    left: 1px;
+    width: 2px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(77deg)
+  }
+
+  .body3 .rightForearm {
+    top: 5px;
+    left: 1px;
+    width: 1px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(9deg);
+  }
+
+  .body3 .rightHand {
+    top: 4px;
+    left: 0px;
+    width: 1px;
+    height: 2px;
+    border-radius: 2px;
+    transform: rotate(2deg);
+    background-color: #000;
+  }
+
+  .body3 .leftThigh,
+  .body3 .rightThigh {
+    top: 14px;
+    left: 2px;
+    width: 2px;
+    height: 11px;
+    background-color: #000;
+    transform: rotate(77deg);
+  }
+
+  .body3 .rightCalf,
+  .body3 .leftCalf {
+    width: 1px;
+    height: 10px;
+    top: 10px;
+    left: 1px;
+    background-color: #000;
+    transform: rotate(-169deg);
+  }
+
+  .body3 .rightFoot,
+  .body3 .leftFoot {
+    top: 10px;
+    width: 1px;
+    height: 2px;
+    background-color: #000;
+    transform: rotate(23deg);
+  }
+</style>
+<!-- 4 -->
+<style>
+  .body4 {
+    height: 15px;
+    transform-origin: 2px 15px;
+    transform: rotate(-148deg) translate(5px, 17px);
+    border-radius: 2px;
+  }
+
+  .body4 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 32% 47%, #fff 60%, #000);
+    top: -6px;
+    left: -1px;
+    border-radius: 4px;
+  }
+
+  .body4 .leftBigarm,
+  .body4 .rightBigarm {
+    top: 0;
+    left: 1px;
+    width: 2px;
+    height: 7px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(64deg);
+  }
+
+  .body4 .leftForearm,
+  .body4 .rightForearm {
+    top: 7px;
+    left: 1px;
+    width: 1px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body4 .leftHand,
+  .body4 .rightHand {
+    top: 4px;
+    left: 0px;
+    width: 1px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body4 .leftThigh,
+  .body4 .rightThigh {
+    top: 15px;
+    left: 1px;
+    width: 2px;
+    height: 15px;
+    background-color: #000;
+    transform: rotate(151deg);
+  }
+
+  .body4 .leftCalf,
+  .body4 .rightCalf {
+    top: 15px;
+    width: 1px;
+    height: 10px;
+    left: 1px;
+    background-color: #000;
+  }
+
+  .body4 .rightFoot,
+  .body4 .leftFoot {
+    top: 8px;
+    width: 1px;
+    height: 4px;
+    background-color: #000;
+    transform: rotate(45deg);
+  }
+</style>
+<!-- 5 -->
+<style>
+  .body5 {
+    height: 15px;
+    transform: translate(-3px, 0px);
+    border-radius: 2px;
+  }
+
+  .body5 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 68% 47%, #fff 60%, #000);
+    top: -4px;
+    left: -4px;
+    border-radius: 4px;
+    transform-origin: 6px 6px;
+    transform: rotate(89deg);
+  }
+
+  .body5 .leftBigarm,
+  .body5 .rightBigarm {
+    top: 2px;
+    left: 1px;
+    width: 2px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-83deg);
+  }
+
+  .body5 .leftForearm,
+  .body5 .rightForearm {
+    top: 6px;
+    left: 1px;
+    width: 1px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-3deg);
+  }
+
+  .body5 .leftHand,
+  .body5 .rightHand {
+    top: 4px;
+    left: 0px;
+    width: 1px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-27deg);
+  }
+
+  .body5 .leftThigh,
+  .body5 .rightThigh {
+    top: 14px;
+    left: 1px;
+    width: 2px;
+    height: 9px;
+    background-color: #000;
+    transform: rotate(-66deg);
+  }
+
+  .body5 .leftCalf,
+  .body5 .rightCalf {
+    top: 10px;
+    width: 1px;
+    height: 12px;
+    left: 0px;
+    background-color: #000;
+    transform: rotate(122deg);
+  }
+
+  .body5 .rightFoot,
+  .body5 .leftFoot {
+    top: 10px;
+    width: 1px;
+    left: -2px;
+    height: 4px;
+    background-color: #000;
+    transform: rotate(-58deg);
+  }
+</style>
+<!-- 6 -->
+<style>
+  .body6 {
+    height: 15px;
+    transform: translate(-4px, 0px);
+    border-radius: 2px;
+  }
+
+  .body6 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 68% 47%, #fff 60%, #000);
+    top: -4px;
+    left: 0px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  .body6 .leftBigarm {
+    top: 2px;
+    left: 2px;
+    width: 2px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-173deg);
+  }
+
+  .body6 .leftForearm {
+    top: 5px;
+    left: 1px;
+    width: 1px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(83deg);
+  }
+
+  .body6 .leftHand {
+    top: 6px;
+    left: 0px;
+    width: 1px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(5deg);
+  }
+
+  .body6 .rightBigarm {
+    top: 2px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body6 .rightForearm {
+    top: 6px;
+    left: 1px;
+    width: 1px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body6 .rightHand {
+    top: 4px;
+    left: 0px;
+    width: 1px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body6 .leftThigh {
+    top: 12px;
+    left: 1px;
+    width: 2px;
+    height: 9px;
+    background-color: #000;
+    transform: rotate(-85deg);
+  }
+
+  .body6 .leftCalf {
+    top: 10px;
+    width: 1px;
+    height: 9px;
+    left: 1px;
+    background-color: #000;
+    transform: rotate(84deg);
+  }
+
+  .body6 .leftFoot {
+    top: 9px;
+    width: 1px;
+    left: 0px;
+    height: 3px;
+    background-color: #000;
+    transform: rotate(-30deg);
+  }
+
+  .body6 .rightThigh {
+    top: 14px;
+    left: 0px;
+    width: 2px;
+    height: 9px;
+    background-color: #000;
+    transform: rotate(-1deg);
+  }
+
+  .body6 .rightCalf {
+    top: 9px;
+    width: 1px;
+    height: 9px;
+    left: -1px;
+    background-color: #000;
+    transform: rotate(-87deg);
+  }
+
+  .body6 .rightFoot {
+    top: 9px;
+    width: 1px;
+    left: 0px;
+    height: 3px;
+    background-color: #000;
+  }
+</style>
+<!-- 7 -->
+<style>
+  .body7 {
+    height: 12px;
+    border-radius: 2px;
+    transform: rotate(10deg) translate(4px, -2px);
+  }
+
+  .body7 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 32% 47%, #fff 60%, #000);
+    top: -4px;
+    left: -4px;
+    border-radius: 4px;
+    transform-origin: 6px 6px;
+    transform: rotate(-30deg);
+  }
+
+  .body7 .leftBigarm,
+  .body7 .rightBigarm {
+    top: 2px;
+    left: 1px;
+    width: 2px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(83deg);
+  }
+
+  .body7 .leftForearm,
+  .body7 .rightForearm {
+    top: 6px;
+    left: 1px;
+    width: 1px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-3deg);
+  }
+
+  .body7 .leftHand,
+  .body7 .rightHand {
+    top: 4px;
+    left: 0px;
+    width: 1px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(27deg);
+  }
+
+  .body7 .leftThigh,
+  .body7 .rightThigh {
+    top: 11px;
+    left: 1px;
+    width: 2px;
+    height: 8px;
+    background-color: #000;
+    transform: rotate(29deg);
+  }
+
+  .body7 .leftCalf,
+  .body7 .rightCalf {
+    top: 8px;
+    width: 1px;
+    height: 7px;
+    left: 0px;
+    background-color: #000;
+    transform: rotate(-26deg);
+  }
+
+  .body7 .rightFoot,
+  .body7 .leftFoot {
+    top: 7px;
+    width: 1px;
+    left: 0px;
+    height: 2px;
+    background-color: #000;
+    transform: rotate(33deg);
+  }
+</style>
+<!-- 8 -->
+<style>
+  .body8 {
+    height: 14px;
+    border-radius: 2px;
+    transform: translate(4px, 0px);
+  }
+
+  .body8 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 32% 47%, #fff 60%, #000);
+    top: -4px;
+    left: -1px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  .body8 .leftBigarm {
+    top: 2px;
+    left: 1px;
+    width: 2px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(180deg);
+  }
+
+  .body8 .leftForearm {
+    top: 6px;
+    left: 1px;
+    width: 1px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-95deg);
+  }
+
+  .body8 .leftHand {
+    top: 6px;
+    left: 0px;
+    width: 1px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body8 .rightBigarm {
+    top: 2px;
+    left: 1px;
+    width: 2px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: #000;
+  }
+
+  .body8 .rightForearm {
+    top: 8px;
+    left: 1px;
+    width: 1px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(87deg);
+  }
+
+  .body8 .rightHand {
+    top: 8px;
+    left: 0px;
+    width: 1px;
+    height: 14px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(90deg);
+  }
+
+  .body8 .leftThigh {
+    top: 12px;
+    left: 1px;
+    width: 2px;
+    height: 9px;
+    background-color: #000;
+    transform: rotate(85deg);
+  }
+
+  .body8 .leftCalf {
+    top: 9px;
+    width: 1px;
+    height: 9px;
+    left: 0px;
+    background-color: #000;
+    transform: rotate(-84deg);
+  }
+
+  .body8 .leftFoot {
+    top: 9px;
+    width: 1px;
+    left: 0px;
+    height: 3px;
+    background-color: #000;
+    transform: rotate(30deg);
+  }
+
+  .body8 .rightThigh {
+    top: 14px;
+    left: 2px;
+    width: 2px;
+    height: 10px;
+    background-color: #000;
+    transform: rotate(2deg);
+  }
+
+  .body8 .rightCalf {
+    top: 10px;
+    width: 1px;
+    height: 9px;
+    left: -1px;
+    background-color: #000;
+    transform: rotate(87deg);
+  }
+
+  .body8 .rightFoot {
+    top: 9px;
+    width: 1px;
+    left: 0px;
+    height: 3px;
+    background-color: #000;
+  }
+</style>
+<!-- 9 -->
+<style>
+  .body9 {
+    height: 12px;
+    transform: rotate(-35deg) translate(-2px, 0px);
+    border-radius: 2px;
+  }
+
+  .body9 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 22% 47%, #fff 60%, #000);
+    top: -4px;
+    left: -1px;
+    border-radius: 4px;
+    transform-origin: 6px 6px;
+    transform: rotate(49deg);
+  }
+
+  .body9 .leftBigarm,
+  .body9 .rightBigarm {
+    top: 2px;
+    left: 1px;
+    width: 2px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-100deg);
+  }
+
+  .body9 .leftForearm,
+  .body9 .rightForearm {
+    top: 8px;
+    left: 1px;
+    width: 1px;
+    height: 7px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(80deg);
+  }
+
+  .body9 .leftHand,
+  .body9 .rightHand {
+    top: 7px;
+    left: 0px;
+    width: 1px;
+    height: 12px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(87deg);
+  }
+
+  .body9 .leftThigh,
+  .body9 .rightThigh {
+    top: 11px;
+    left: 5px;
+    width: 2px;
+    height: 11px;
+    background-color: #000;
+    transform: rotate(59deg);
+  }
+
+  .body9 .leftCalf,
+  .body9 .rightCalf {
+    top: 11px;
+    width: 1px;
+    height: 6px;
+    left: 0px;
+    background-color: #000;
+    transform: rotate(-27deg);
+  }
+
+  .body9 .rightFoot,
+  .body9 .leftFoot {
+    top: 6px;
+    width: 1px;
+    left: -1px;
+    height: 2px;
+    background-color: #000;
+    transform: rotate(58deg);
+  }
+</style>
+<!-- 0 -->
+<style>
+  .body0 {
+    height: 12px;
+    transform: rotate(-1deg) translate(-3px, 2px);
+    border-radius: 2px;
+  }
+
+  .body0 .head {
+    width: 6px;
+    height: 6px;
+    background-image: radial-gradient(closest-side at 28% 47%, #fff 60%, #000);
+    top: -4px;
+    left: -2px;
+    border-radius: 4px;
+    transform-origin: 6px 6px;
+    transform: rotate(26deg)
+  }
+
+  .body0 .leftBigarm,
+  .body0 .rightBigarm {
+    top: 2px;
+    left: 1px;
+    width: 2px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(-108deg);
+  }
+
+  .body0 .leftForearm,
+  .body0 .rightForearm {
+    top: 8px;
+    left: 1px;
+    width: 1px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(101deg);
+  }
+
+  .body0 .leftHand,
+  .body0 .rightHand {
+    top: 6px;
+    left: 0px;
+    width: 1px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #000;
+    transform: rotate(20deg);
+  }
+
+  .body0 .leftThigh,
+  .body0 .rightThigh {
+    top: 11px;
+    left: 0px;
+    width: 2px;
+    height: 11px;
+    background-color: #000;
+    transform: rotate(-26deg);
+  }
+
+  .body0 .leftCalf,
+  .body0 .rightCalf {
+    top: 11px;
+    width: 1px;
+    height: 9px;
+    left: 0px;
+    background-color: #000;
+    transform: rotate(-127deg);
+  }
+
+  .body0 .rightFoot,
+  .body0 .leftFoot {
+    top: 9px;
+    width: 1px;
+    left: 0px;
+    height: 3px;
+    background-color: #000;
+    transform: rotate(-31deg);
+  }
+</style>
+<style>
+  .app {
+    margin: 500px 100px 100px;
+    overflow: hidden;
+  }
+
+  .app>div {
+    float: left;
+  }
+
+  .mark {
+    float: left;
+    width: 18px;
+    height: 40px;
+    position: relative;
+  }
+
+  .mark::after,
+  .mark::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    width: 4px;
+    height: 4px;
+    background-color: #000;
+    border-radius: 4px;
+  }
+
+  .mark::after {
+    top: 13px;
+  }
+
+  .mark::before {
+    bottom: 11px;
+  }
+</style>
+
+<body>
+  <div class="app">
+    <p></p>
+  </div>
+  <!-- <div class="body">
+    <div class="head" des="头"></div>
+    <div class="leftBigarm" des="左肩">
+      <div class="leftForearm" des="左小臂">
+        <div class="leftHand" des="左手"></div>
+      </div>
+    </div>
+    <div class="rightBigarm" des="右肩">
+      <div class="rightForearm" des="右小臂">
+        <div class="rightHand" des="右手"></div>
+      </div>
+    </div>
+    <div class="leftThigh" des="左大腿">
+      <div class="leftCalf" des="左小腿">
+        <div class="leftFoot" des="左脚"></div>
+      </div>
+    </div>
+    <div class="rightThigh" des="右大腿">
+      <div class="rightCalf" des="右小腿">
+        <div class="rightFoot" des="右脚"></div>
+      </div>
+    </div>
+  </div> -->
+  <script>
+    let date = {};
+    let newD = {};
+    let app = document.querySelector('.app');
+    let timer1 = function (){
+      date.nDate = new Date();
+      date.hours = date.nDate.getHours();
+      date.minutes = date.nDate.getMinutes();
+      date.seconds = date.nDate.getSeconds();
+      newD = {
+        hoursTen: Math.floor(date.hours / 10),
+        hours: date.hours % 10,
+        minutesTen: Math.floor(date.minutes / 10),
+        minutes: date.minutes % 10,
+        secondsTen: Math.floor(date.seconds / 10),
+        seconds: date.seconds % 10,
+      }
+      app.replaceChild(box, app.childNodes[0])
+      let arr = document.querySelectorAll('.body')
+      Object.keys(newD).forEach((v,i) => {
+        arr[i].classList=['body body'+newD[v]]
+      })
+    } 
+    setInterval(timer1,1000)
+    let box = document.createElement("div")
+    for (let i = 0; i < 6; i++) {
+      let el = document.createElement("div");
+      el.classList.add("body","body0");
+      if (i === 2 || i === 4) {
+          let mark = document.createElement("div");
+          mark.classList.add("mark")
+          app.appendChild(mark)
+        }
+      el.innerHTML = `
+        <div class="head" des="头"></div>
+        <div class="leftBigarm" des="左肩"><div class="leftForearm" des="左小臂"><div class="leftHand" des="左手"></div></div></div>
+        <div class="rightBigarm" des="右肩"><div class="rightForearm" des="右小臂"><div class="rightHand" des="右手"></div></div></div>
+        <div class="leftThigh" des="左大腿"><div class="leftCalf" des="左小腿"><div class="leftFoot" des="左脚"></div></div></div>
+        <div class="rightThigh" des="右大腿"><div class="rightCalf" des="右小腿"><div class="rightFoot" des="右脚"></div></div></div>
+        `
+      app.appendChild(el)
+    }
+   
+  </script>
+</body>
+
+</html>
