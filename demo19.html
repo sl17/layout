@@ -1094,22 +1094,22 @@
         arr[i].classList=['body body'+newD[v]]
       })
     } 
-    //setInterval(timer1,1000)
+    setInterval(timer1,1000)
     let box = document.createElement("div")
     for (let i = 0; i < 6; i++) {
       let el = document.createElement("div");
-      el.classList.add("body","body");//0
+      el.classList.add("body","body0");//0
       if (i === 2 || i === 4) {
           let mark = document.createElement("div");
           mark.classList.add("mark")
           app.appendChild(mark)
         }
       el.innerHTML = `
-        <div class="head" des="头"></div>
-        <div class="leftBigarm" des="左肩"><div class="leftForearm" des="左小臂"><div class="leftHand" des="左手"></div></div></div>
-        <div class="rightBigarm" des="右肩"><div class="rightForearm" des="右小臂"><div class="rightHand" des="右手"></div></div></div>
-        <div class="leftThigh" des="左大腿"><div class="leftCalf" des="左小腿"><div class="leftFoot" des="左脚"></div></div></div>
-        <div class="rightThigh" des="右大腿"><div class="rightCalf" des="右小腿"><div class="rightFoot" des="右脚"></div></div></div>
+        <div class="head"></div>
+        <div class="leftBigarm"><div class="leftForearm"><div class="leftHand"></div></div></div>
+        <div class="rightBigarm"><div class="rightForearm"><div class="rightHand"></div></div></div>
+        <div class="leftThigh"><div class="leftCalf"><div class="leftFoot"></div></div></div>
+        <div class="rightThigh"><div class="rightCalf"><div class="rightFoot"></div></div></div>
         `
       app.appendChild(el)
     }
