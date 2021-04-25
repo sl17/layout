@@ -1,60 +1,381 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
-	<style type="text/css">
-		.parent{border: 1px solid #000;}
-		.child{background: #eee;}
-	</style>
+<meta charset="UTF-8" />
+<title>Document</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body>div {
+    float: left;
+  }
+
+  body>div>div {
+    width: 400px;
+    height: 400px;
+    border: 1px solid #000;
+  }
+
+  body>div>div>div {
+    background-color: #d8d8d8;
+    font-size: 12px;
+  }
+
+  .wp1 {
+    position: relative;
+  }
+
+  .wp1 .box {
+    position: absolute;
+    width: 140px;
+    height: 200px;
+    margin-top: -100px;
+    margin-left: -70px;
+    top: 50%;
+    left: 50%;
+  }
+
+  .wp2 {
+    position: relative;
+  }
+
+  .wp2 .box {
+    position: absolute;
+    width: 130px;
+    height: 200px;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .wp3 {
+    position: relative;
+  }
+
+  .wp3 .box {
+    position: absolute;
+    width: 140px;
+    height: 160px;
+    top: calc(50% - 80px);
+    left: calc(50% - 70px);
+  }
+
+
+  .wp4 {
+    position: relative;
+  }
+
+  .wp4 .box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .wp5 {
+    text-align: center;
+    line-height: 400px;
+  }
+
+  .wp5 .box {
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 20px;
+    text-align: left;
+  }
+
+  .wp6 {
+    display: table;
+    text-align: center;
+  }
+
+  .wp6 .box {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .wp7 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wp8 {
+    display: grid;
+  }
+
+  .wp8 .box {
+    align-self: center;
+    justify-self: center;
+  }
+
+  .wp9 {
+    display: grid;
+    place-items: center;
+  }
+
+  .wp10 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .wp10 .box {
+    align-self: center;
+  }
+
+  .wp11 {
+    display: flex;
+    place-content: center;
+    place-items: center;
+  }
+
+  .wp12 {
+    display: -webkit-box;
+    -webkit-box-align: center;
+  }
+  .wp12 .box{
+    margin: 0 auto;
+  }
+  
+</style>
 </head>
 <body>
-	<h1>先说子元素固定高度的情况：</h1>
-	<p>先来个定位布局 （兼容IE）</p>
-	<style>
-		.parent0{width: 100px;height: 200px;position: relative;}
-		.child0{width: 100px;height: 50px;position: absolute;margin: auto;top:0;bottom:0;}
-	</style>
-	<div class='parent0 parent'>
-	  <div class='child0 child'>child 采用定位布局</div>
-	</div>
+<div class="wp">
+    <p>子元素定宽高：absolute + 负margin</p>
+    <div class="wp1">
+      <div class="box">
+        <p><code><pre>
+.wp1 {
+  position: relative;
+}
+.wp1 .box {
+  position: absolute;
+  width: 140px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -70px;
+  top: 50%;
+  left: 50%;
+}
+        </pre></code></p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素定宽高：absolute + margin:auto</p>
+    <div class="wp2">
+      <div class="box">
+        <p>
+          <code><pre>
+.wp2 {
+  position: relative;
+}
 
-	<p>定位布局 + transform</p>
-	<style>
-		.parent1{width: 100px;height: 200px;position: relative;}
-		.child1{width: 100px;height: 50px;position: absolute;top: 50%;transform: translate(0,-50%);}
-	</style>
-	<div class='parent1 parent'>
-	  <div class='child1 child'>child 采用定位布局</div>
-	</div>
+.wp2 .box {
+  position: absolute;
+  width: 130px;
+  height: 200px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+          </pre></code>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素定宽高：absolute + calc</p>
+    <div class="wp3">
+      <div class="box">
+        <p><code><pre>
+.wp3 {
+  position: relative;
+}
 
-	<p>定位布局 + 负margin 需要计算 繁琐 （好处是兼容IE）</p>
-	<style>
-		.parent2{width: 100px;height: 200px;position: relative;}
-		.child2{width: 100px;height: 50px;position: absolute;top: 50%;margin: -25px auto 0;}
-	</style>
-	<div class='parent2 parent'>
-	  <div class='child2 child'>child 采用定位布局</div>
-	</div>
+.wp3 .box {
+  position: absolute;
+  width: 140px;
+  height: 160px;
+  top: calc(50% - 80px);
+  left: calc(50% - 70px);
+}
+        </pre></code></p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素不定宽高：absolute + transform</p>
+    <div class="wp4">
+      <div class="box">
+        <p><code><pre>
+.wp4 {
+  position: relative;
+}
 
+.wp4 .box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+        </pre></code></p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素不定宽高：line-height</p>
+    <div class="wp5">
+      <div class="box">
+        <p><code><pre>
+.wp5 {
+  text-align: center;
+  line-height: 400px;
+}
 
-	<h1>接下来就是子元素不确定高度的情况</h1>
-	<p>table布局（兼容IE）</p>
-	<style>
-		.parent3{width: 100px;height: 200px;display: table;}
-		.child3{width: 50px;display: table-cell;vertical-align: middle;}
-	</style>
-	<div class='parent3 parent'>
-	  <div class='child3 child'>child 采用定位布局</div>
-	</div>
-	
-	<p>再来一个</p>
-	<style>	
-		.parent4{width: 100px;height: 200px;display: -webkit-box;-webkit-box-align: center;}
-	</style>
-	<div class='parent4 parent'>
-  	<div class='child child'>child 采用定位布局</div>
-	</div>
+.wp5 .box {
+  font-size: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 20px;
+  text-align: left;
+}
+        </pre></code></p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素不定宽高：table</p>
+    <div class="wp6">
+      <div class="box">
+        <p><code><pre>
+.wp6 {
+  display: table;
+  text-align: center;
+}
+
+.wp6 .box {
+  display: table-cell;
+  vertical-align: middle;
+}
+        </pre></code></p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素不定宽高：flex</p>
+    <div class="wp7">
+      <div class="box">
+        <p><code><pre>
+.wp7 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+        </pre></code></p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素不定宽高：flex -2</p>
+    <div class="wp10">
+      <div class="box">
+        <p>
+          <code>
+            <pre>
+.wp10{
+  display: flex;
+justify-content: center;
+}
+.wp10 .box{
+  align-self: center;
+}
+            </pre>
+          </code>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素不定宽高：flex -3</p>
+    <div class="wp11">
+      <div class="box">
+        <p>
+          <code>
+            <pre>
+.wp11{
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+            </pre>
+          </code>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素不定宽高：display: -webkit-box;</p>
+    <div class="wp12">
+      <div class="box">
+        <p>
+          <code>
+            <pre>
+.wp12 {
+  display: -webkit-box;
+  -webkit-box-align: center;
+}
+.wp12 .box{
+  margin: 0 auto;
+}
+            </pre>
+          </code>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素不定宽高：grid</p>
+    <div class="wp8">
+      <div class="box">
+        <p><code><pre>
+.wp8 {
+  display: grid;
+}
+
+.wp8 .box {
+  align-self: center;
+  justify-self: center;
+}
+        </pre></code></p>
+      </div>
+    </div>
+  </div>
+  <div class="wp">
+    <p>子元素不定宽高：grid-2</p>
+    <div class="wp9">
+      <div class="box">
+        <p>
+          <code>
+          <pre>
+.wp9 {
+  display: grid;
+  place-items: center;
+}
+          </pre>
+        </code>
+        </p>
+      </div>
+    </div>
+  </div>
 
 
 </body>
