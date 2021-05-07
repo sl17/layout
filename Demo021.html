@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      -webkit-text-size-adjust: none;
+    }
+    p{
+      font-size: 8px;
+    }
+    :root{
+      --bg: #000;
+      --text-color: #0f0;
+      --link-color: #0a0;
+      --link-hover: #040;
+    }
+    .pink-theme{
+      --bg: rgb(247, 72, 232);
+      --text-color: rgb(25, 29, 238);
+      --link-color: rgb(7, 199, 247);
+      --link-hover: rgb(193, 235, 8);
+    }
+    body{
+      background-color: var(--bg);
+      color: var(--text-color);
+    }
+    a,a:link{
+      color: var(--link-color);
+    }
+    a:hover{
+      color: var(--link-hover);
+    }
+  </style>
+</head>
+
+<body>
+  <p>
+    哈哈哈啊大萨达
+  </p>
+  <a href="sfds">adjasljdas </a>
+  <a href=""  class="link">sdsadsadas</a>
+  <button class="toggle-theme">00</button>
+  <script>
+    const toggleBtn = document.querySelector('.toggle-theme')
+    toggleBtn.addEventListener('click',e=>{
+      e.preventDefault;
+      if(document.body.classList.contains('pink-theme')){
+        document.body.classList.remove('pink-theme')
+        toggleBtn.innerHTML='切换正常主题色'
+        localStorage.removeItem('pinkTheme')
+      }else{
+        document.body.classList.add('pink-theme')
+        toggleBtn.innerHTML='切换黑色主题色'
+        localStorage.setItem('pinkTheme',true)
+      }
+    })
+  </script>
+  <script>
+//     const offset = ele => {
+//       let result = {
+//         top: 0,
+//         left: 0
+//       }
+//       const getOffset = (node, init) => {
+//         if (node.nodeType !== 1) {
+//           return
+//         }
+//         position = window.getComputedStyle(node)['position']
+//         if (typeof (init) === 'undefined' && position === 'static') {
+//           getOffset(node.parentNode)
+//           return
+//         }
+//         result.top = node.offsetTop + result.top - node.scrollTop;
+//         result.left = node.offsetLeft + result.left - node.scrollLeft;
+//         if (position === 'fixed') {
+//           return
+//         }
+//         getOffset(node.parentNode)
+//       }
+//       //如果当前DOM节点满足display==='none'，直接返回{top:0,left:0}
+//       if (window.getComputedStyle(ele)['display'] === 'none') {
+//         return result
+//       }
+//       let position
+//       getOffset(ele, true)
+//       return result
+//     }
+
+//     const offset = ele => {
+//       let result = {
+//         top: 0,
+//         left: 0
+//       }
+//       //如果当前是ie11以下，直接返回{top:0,left:0}
+//       if (!ele.getClientRects().length) {
+//         return result
+//       }
+//       //如果当前DOM节点满足display==='none'，直接返回{top:0,left:0}
+//       if (window.getComputedStyle(ele)['display'] === 'none') {
+//         return result
+//       }
+//       result = ele.getBoundingClientRect()
+//       var docElement = ele.ownerDocument.documentElement;
+//       return {
+//         top: result.top + window.pageYOffset - docElement.clientTop,
+//         left: result.left + window.pageXOffset - docElement.clientLeft
+//       }
+//     }
+  </script>
+</body>
+
+</html>
