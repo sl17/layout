@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>大数据多条件判断</title>
+</head>
+
+<body>
+  <script>
+
+    let arr = [
+      (i) => i % 3 == 0,
+      (i) => i % 5 == 0,
+      (i) => i % 7 == 0,
+      (i) => i % 5 == 0 && i % 7 == 0,
+      (i) => i % 5 == 0 && i % 3 == 0,
+      (i) => i % 7 == 0 && i % 3 == 0,
+    ]
+
+    for (let index = 0; index < 1000; index++) {
+      arr.find(i => i(index)) && console.log(index)
+    }
+    let start = Date.now()
+    let num = 0
+    setTimeout(() => {
+      for (let index = 0; index < 333; index++) {
+        arr.find(i => i(index)) && console.log(index)
+      }
+      num += 1
+      if (num == 3) {
+        let end = Date.now()
+        console.log(end - start)
+      }
+    }, 0)
+
+    setTimeout(() => {
+      for (let index = 333; index < 666; index++) {
+        arr.find(i => i(index)) && console.log(index)
+      }
+      num += 1;
+      if (num == 3) {
+        let end = Date.now()
+        console.log(end - start)
+      }
+    }, 0)
+
+    setTimeout(() => {
+      for (let index = 666; index < 1000; index++) {
+        arr.find(i => i(index)) && console.log(index)
+      }
+      num += 1
+      if (num == 3) {
+        let end = Date.now()
+        console.log(end - start)
+      }
+    }, 0)
+  </script>
+</body>
+
+</html>
