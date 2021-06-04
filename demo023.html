@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .gradual {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradual::before {
+            content: "";
+            position: absolute;
+            width: 3000%;
+            height: 3000%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(45deg, #ff5100, #ffbb00, #e682ff, #894fff, #4fe2ff, #4fff4f, #f4ff4f, #ffbb00, #ff5100);
+            background-size: 100% 100%;
+            animation: bgposition 100s infinite linear alternate;
+            z-index: -1;
+        }
+
+        @keyframes bgposition {
+            0% {
+                transform: translate(0%, 0%);
+            }
+
+            25% {
+                transform: translate(0%, -96%);
+            }
+
+            50% {
+                transform: translate(-96%, -96%);
+            }
+
+            75% {
+                transform: translate(-96%, 0%) ;
+            }
+
+            100% {
+                transform: translate(0%, 0%);
+            }
+        }
+        div.b {
+            width: 33%;
+            background-color: coral;
+            border-radius: 50%;
+            padding: 33% 0 0;
+            margin: 33% 0 0;
+            margin-bottom: 20px;
+            position: relative;
+        } 
+        div.s{
+            position: absolute;
+            width: 80%;
+            padding: 80% 0 0;
+            background: red;
+            margin: auto;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gradual"></div>
+    <div class="b">
+        <div class="s"></div>
+    </div>
+   
+</body>
+
+</html>
