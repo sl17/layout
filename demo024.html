@@ -71,7 +71,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.5;
+            opacity: 0;
             filter: alpha(opacity=0);
         }
     </style>
@@ -87,7 +87,7 @@
         <div class="operating-box">
             <label><input type="checkbox" v-model="allChecked" @change="allSel">全选</label>
             <div :class="sitem.checked?'select-item isActive':'select-item'" v-for="(sitem,i) in tabData" :key="'j'+i">
-                {{sitem.name}}{{sitem.checked}}
+                {{sitem.name}}
                 <input type="checkbox" v-model="sitem.checked" class="item-checked" @change="selItem(sitem)">
             </div>
         </div>
@@ -101,36 +101,24 @@
                 icheck: false,
                 selcted: '项目1',
                 data: [
-                    {
-                        'title': '项目1',
-                        arr:
-                            [
-                                { id: '1', name: "项目1-1" },
-                                { id: '11', name: "项目1-2" },
-                                { id: '111', name: "项目1-3" },
-                                { id: '1111', name: "项目1-4" }
-                            ]
-                    },
-                    { 'title': '项目2', arr: [{ id: '2', name: "项目2-1" }, { id: '22', name: "项目2-2" }, { id: '222', name: "项目2-3" }] },
-                    { 'title': '项目3', arr: [{ id: '3', name: "项目3-1" }, { id: '33', name: "项目3-2" }, { id: '333', name: "项目3-3" }] },
-                    { 'title': '项目4', arr: [{ id: '4', name: "项目4-1" }, { id: '44', name: "项目4-2" }, { id: '444', name: "项目4-3" }] },
-                    { 'title': '项目5', arr: [{ id: '5', name: "项目5-1" }, { id: '55', name: "项目5-2" }, { id: '555', name: "项目5-3" }] },
+                    { 'title': '项目1', 
+                    arr: [{ id: '1', name: "项目1-1", checked: false }, { id: '11', name: "项目1-2", checked: false }, { id: '12', name: "项目1-3", checked: false }, { id: '13', name: "项目1-4", checked: false }] },
+                    { 'title': '项目2', 
+                    arr: [{ id: '2', name: "项目2-1", checked: false }, { id: '21', name: "项目2-2", checked: false }, { id: '22', name: "项目2-3", checked: false }, { id: '23', name: "项目2-4", checked: false }, { id: '205', name: "项目2-5", checked: false }] },
+                    { 'title': '项目3', 
+                    arr: [{ id: '3', name: "项目3-1", checked: false }, { id: '31', name: "项目3-2", checked: false }, { id: '32', name: "项目3-3", checked: false }, { id: '33', name: "项目3-3", checked: false }, { id: '34', name: "项目3-3", checked: false }, { id: '35', name: "项目3-3", checked: false }, { id: '36', name: "项目3-3", checked: false }] },
+                    { 'title': '项目4', 
+                    arr: [{ id: '4', name: "项目4-1", checked: false }, { id: '41', name: "项目4-2", checked: false }, { id: '42', name: "项目4-3", checked: false }] },
+                    { 'title': '项目5', 
+                    arr: [{ id: '5', name: "项目5-1", checked: false }, { id: '51', name: "项目5-2", checked: false }, { id: '52', name: "项目5-3", checked: false }, { id: '53', name: "项目5-3", checked: false }, { id: '54', name: "项目5-3", checked: false }] },
                 ],
                 tabData: [],//把每页的数据放进，循环展示在页面选项
                 selckedItem: [],//选中的数据
             },
             created() {
-                this.dataSet()
+                this.tabsSel(this.selcted, 0)
             },
             methods: {
-                dataSet() {
-                    this.data.map(v => {
-                        v.arr.map(t => {
-                            t.checked = false;
-                        })
-                    })
-                    this.tabsSel(this.selcted, 0)
-                },
                 tabsSel(seled, index) {
                     this.selcted = seled;
                     this.tabData = this.data[index].arr;
